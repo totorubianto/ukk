@@ -32,8 +32,10 @@
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
-									<li><a href="news.html">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="<?php echo base_url('pemesanan/index'); ?>">Pemesanan</a></li>
+									<li><a href="<?php echo base_url('auth/logout'); ?>"><?php echo $this->session->userdata('nama'); ?></a></li>
+									<?php if( $this->session->userdata('nama'))
+									 ?>
 								</ul>
 							</nav>
 							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
@@ -100,7 +102,7 @@
 				
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(<?php echo base_url() ?>images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -116,7 +118,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(<?php echo base_url() ?>images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -132,7 +134,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(<?php echo base_url() ?>images/home_slider.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -186,7 +188,7 @@
 	<!-- Intro -->
 
 	<div class="intro">
-		<div class="intro_background" style="background-image:url(images/intro.png)"></div>
+		<div class="intro_background" style="background-image:url(<?php echo base_url() ?>images/intro.png)"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -196,7 +198,7 @@
 							<!-- Intro Item -->
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="images/beach.svg" alt=""></div>
+									<div class="intro_icon"><img src="<?php echo base_url() ?>images/beach.svg" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">Top Destinations</div>
 										<div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
@@ -207,7 +209,7 @@
 							<!-- Intro Item -->
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="images/wallet.svg" alt=""></div>
+									<div class="intro_icon"><img src="<?php echo base_url() ?>images/wallet.svg" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">The Best Prices</div>
 										<div class="intro_subtitle"><p>Sollicitudin mauris lobortis in.</p></div>
@@ -218,7 +220,7 @@
 							<!-- Intro Item -->
 							<div class="col-lg-4 intro_col">
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
-									<div class="intro_icon"><img src="images/suitcase.svg" alt=""></div>
+									<div class="intro_icon"><img src="<?php echo base_url() ?>images/suitcase.svg" alt=""></div>
 									<div class="intro_content">
 										<div class="intro_title">Amazing Services</div>
 										<div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
@@ -250,7 +252,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_1.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_1.jpg" alt="">
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 							</div>
 							<div class="destination_content">
@@ -263,7 +265,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_2.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_2.jpg" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="destinations.html">Indonesia</a></div>
@@ -275,7 +277,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_3.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_3.jpg" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="destinations.html">San Francisco</a></div>
@@ -287,7 +289,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_4.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_4.jpg" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="destinations.html">Paris</a></div>
@@ -299,7 +301,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_5.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_5.jpg" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="destinations.html">Phi Phi Island</a></div>
@@ -311,7 +313,7 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="images/destination_6.jpg" alt="">
+								<img src="<?php echo base_url() ?>images/destination_6.jpg" alt="">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a href="destinations.html">Mykonos</a></div>
@@ -329,7 +331,7 @@
 	<!-- Testimonials -->
 
 	<div class="testimonials" id="testimonials">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/testimonials.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url() ?>images/testimonials.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
@@ -401,7 +403,7 @@
 						
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_1.jpg" alt=""></div>
+							<div class="news_post_image"><img src="<?php echo base_url() ?>images/news_1.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>02</div>
@@ -421,7 +423,7 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_2.jpg" alt=""></div>
+							<div class="news_post_image"><img src="<?php echo base_url() ?>images/news_2.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>01</div>
@@ -441,7 +443,7 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="images/news_3.jpg" alt=""></div>
+							<div class="news_post_image"><img src="<?php echo base_url() ?>images/news_3.jpg" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
 									<div>29</div>
@@ -465,7 +467,7 @@
 				<!-- News Sidebar -->
 				<div class="col-xl-4">
 					<div class="travello">
-						<div class="background_image" style="background-image:url(images/travello.jpg)"></div>
+						<div class="background_image" style="background-image:url(<?php echo base_url() ?>images/travello.jpg)"></div>
 						<div class="travello_content">
 							<div class="travello_content_inner">
 								<div></div>
@@ -489,7 +491,7 @@
 	<!-- Footer -->
 
 	<footer class="footer">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/footer_1.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url() ?>images/footer_1.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -517,7 +519,7 @@
 						<!-- Footer Contact Item -->
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/sign.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="<?php echo base_url() ?>images/sign.svg" alt=""></div>
 								<div class="footer_contact_title">give us a call</div>
 								<div class="footer_contact_list">
 									<ul>
@@ -531,7 +533,7 @@
 						<!-- Footer Contact Item -->
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/trekking.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="<?php echo base_url() ?>images/trekking.svg" alt=""></div>
 								<div class="footer_contact_title">come & drop by</div>
 								<div class="footer_contact_list">
 									<ul style="max-width:190px">
@@ -544,7 +546,7 @@
 						<!-- Footer Contact Item -->
 						<div class="col-xl-4 footer_contact_col">
 							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
-								<div class="footer_contact_icon"><img src="images/around.svg" alt=""></div>
+								<div class="footer_contact_icon"><img src="<?php echo base_url() ?>images/around.svg" alt=""></div>
 								<div class="footer_contact_title">send us a message</div>
 								<div class="footer_contact_list">
 									<ul>

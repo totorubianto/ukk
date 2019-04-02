@@ -18,6 +18,7 @@ class Auth extends CI_Controller {
 	public function login_aksi(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
+
 		$where = array(
 			'username' => $username,
 			'password' => $password
@@ -29,10 +30,10 @@ class Auth extends CI_Controller {
 				'nama' => $username,
 				'status' => "login"
 			);
-
+			
 			$this->session->set_userdata($data_session);
 
-			redirect(base_url("index.php/"));
+			redirect(base_url("home/"));
 		}else{
 			echo "Username dan password salah !";
 			redirect(base_url("auth/login"));
