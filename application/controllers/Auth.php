@@ -23,21 +23,8 @@ class Auth extends CI_Controller {
 			'username' => $username,
 			'password' => $password
 		);
-		$cek = $this->M_login->cek_petugas("petugas",$where)->num_rows();
-		if($cek > 0){
-
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
-			);
-			
-			$this->session->set_userdata($data_session);
-
-			redirect(base_url("home/"));
-		}else{
-			echo "Username dan password salah !";
-			redirect(base_url("auth/login"));
-		}
+		$cek = $this->M_login->cek_petugas("petugas",$where);
+		
 	}
 	public function logout(){
 		$this->session->unset_userdata('nama');

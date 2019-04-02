@@ -32,10 +32,10 @@
 									<li class="active"><a href="index.html">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
-									<li><a href="<?php echo base_url('pemesanan/index'); ?>">Pemesanan</a></li>
+									<li><a href="<?php echo base_url('pemesanan/index/'.$this->session->userdata['id']); ?>">Pemesanan</a></li>
 									<li><a href="<?php echo base_url('auth/logout'); ?>"><?php echo $this->session->userdata('nama'); ?></a></li>
-									<?php if( $this->session->userdata('nama'))
-									 ?>
+									<?php if( $this->session->userdata('nama'))?>
+									
 								</ul>
 							</nav>
 							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
