@@ -1,0 +1,579 @@
+[
+   {
+      "code":"CGK",
+      "city":"Jakarta",
+      "airport":"Soekarno Hatta Intl Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"SUB",
+      "city":"Surabaya",
+      "airport":"Juanda",
+      "grup":"lokal"
+   },
+   {
+      "code":"DPS",
+      "city":"Denpasar, Bali",
+      "airport":"Ngurah Rai Intl",
+      "grup":"lokal"
+   },
+   {
+      "code":"UPG",
+      "city":"Makassar",
+      "airport":"Hasanuddin",
+      "grup":"lokal"
+   },
+   {
+      "code":"BPN",
+      "city":"Balikpapan",
+      "airport":"Sepinggan",
+      "grup":"lokal"
+   },
+   {
+      "code":"JOG",
+      "city":"Yogyakarta",
+      "airport":"Adi Sutjipto",
+      "grup":"lokal"
+   },
+   {
+      "code":"SRG",
+      "city":"Semarang",
+      "airport":"Achmad Yani",
+      "grup":"lokal"
+   },
+   {
+      "code":"BTH",
+      "city":"Batam",
+      "airport":"Hang Nadim",
+      "grup":"lokal"
+   },
+   {
+      "code":"PKU",
+      "city":"Pekanbaru",
+      "airport":"Sultan Syarif Kasim Ii",
+      "grup":"lokal"
+   },
+   {
+      "code":"ARD",
+      "city":"Alor Island",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"AMQ",
+      "city":"Ambon",
+      "airport":"Pattimura",
+      "grup":"lokal"
+   },
+   {
+      "code":"ABU",
+      "city":"Atambua",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"BTJ",
+      "city":"Banda Aceh",
+      "airport":"Sultan Iskandarmuda",
+      "grup":"lokal"
+   },
+   {
+      "code":"TKG",
+      "city":"Bandar Lampung",
+      "airport":"Radin Inten Ii Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"BDO",
+      "city":"Bandung",
+      "airport":"Husein Sastranegara",
+      "grup":"lokal"
+   },
+   {
+      "code":"BDJ",
+      "city":"Banjarmasin",
+      "airport":"Syamsudin Noor",
+      "grup":"lokal"
+   },
+   {
+      "code":"BWX",
+      "city":"Banyuwangi",
+      "airport":"Blimbingsari",
+      "grup":"lokal"
+   },
+   {
+      "code":"BUW",
+      "city":"Baubau, Buton",
+      "airport":"Betoambari",
+      "grup":"lokal"
+   },
+   {
+      "code":"BKS",
+      "city":"Bengkulu",
+      "airport":"Fatmawati Soekarno",
+      "grup":"lokal"
+   },
+   {
+      "code":"BEJ",
+      "city":"Berau",
+      "airport":"Kalimarau",
+      "grup":"lokal"
+   },
+   {
+      "code":"BIK",
+      "city":"Biak",
+      "airport":"Frans Kaisiepo",
+      "grup":"lokal"
+   },
+   {
+      "code":"BMU",
+      "city":"Bima",
+      "airport":"Muhammad Salahuddin",
+      "grup":"lokal"
+   },
+   {
+      "code":"WUB",
+      "city":"Buli",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"ENE",
+      "city":"Ende",
+      "airport":"H Hasan Aroeboesman",
+      "grup":"lokal"
+   },
+   {
+      "code":"FKQ",
+      "city":"Fak Fak",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"GTO",
+      "city":"Gorontalo",
+      "airport":"Jalaluddin",
+      "grup":"lokal"
+   },
+   {
+      "code":"GNS",
+      "city":"Gunung Sitoli",
+      "airport":"Binaka",
+      "grup":"lokal"
+   },
+   {
+      "code":"HLP",
+      "city":"Jakarta",
+      "airport":"Halim Perdanakusuma Intl",
+      "grup":"lokal"
+   },
+   {
+      "code":"DJB",
+      "city":"Jambi",
+      "airport":"Sultan Thaha",
+      "grup":"lokal"
+   },
+   {
+      "code":"DJJ",
+      "city":"Jayapura",
+      "airport":"Sentani",
+      "grup":"lokal"
+   },
+   {
+      "code":"KBU",
+      "city":"Kotabaru",
+      "airport":"Gusti Sjamsir Alam",
+      "grup":"lokal"
+   },
+   {
+      "code":"KNG",
+      "city":"Kaimana",
+      "airport":"Utarom",
+      "grup":"lokal"
+   },
+   {
+      "code":"KDI",
+      "city":"Kendari",
+      "airport":"Haluoleo",
+      "grup":"lokal"
+   },
+   {
+      "code":"KTG",
+      "city":"Ketapang",
+      "airport":"Rahadi Usman",
+      "grup":"lokal"
+   },
+   {
+      "code":"KOE",
+      "city":"Kupang",
+      "airport":"El Tari",
+      "grup":"lokal"
+   },
+   {
+      "code":"LBJ",
+      "city":"Labuan Bajo",
+      "airport":"Komodo",
+      "grup":"lokal"
+   },
+   {
+      "code":"LAH",
+      "city":"Labuha",
+      "airport":"Labuha Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"LKA",
+      "city":"Larantuka",
+      "airport":"Gewayantana",
+      "grup":"lokal"
+   },
+   {
+      "code":"LSW",
+      "city":"Lhokseumawe",
+      "airport":"Malikussaleh Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"LOP",
+      "city":"Lombok",
+      "airport":"Lombok Praya Intl",
+      "grup":"lokal"
+   },
+   {
+      "code":"LUW",
+      "city":"Luwuk",
+      "airport":"Syukuran Aminuddin Amir\/bubung",
+      "grup":"lokal"
+   },
+   {
+      "code":"MLG",
+      "city":"Malang",
+      "airport":"Abdul Rachman Saleh",
+      "grup":"lokal"
+   },
+   {
+      "code":"MJU",
+      "city":"Mamuju",
+      "airport":"Tampa Padang",
+      "grup":"lokal"
+   },
+   {
+      "code":"MDC",
+      "city":"Manado",
+      "airport":"Sam Ratulangi",
+      "grup":"lokal"
+   },
+   {
+      "code":"MKW",
+      "city":"Manokwari",
+      "airport":"Rendani",
+      "grup":"lokal"
+   },
+   {
+      "code":"MOF",
+      "city":"Maumere",
+      "airport":"Frans Seda\/wai Oti",
+      "grup":"lokal"
+   },
+   {
+      "code":"KNO",
+      "city":"Medan",
+      "airport":"Kuala Namu",
+      "grup":"lokal"
+   },
+   {
+      "code":"MNA",
+      "city":"Talaud",
+      "airport":"Melongguane",
+      "grup":"lokal"
+   },
+   {
+      "code":"MKQ",
+      "city":"Merauke",
+      "airport":"Mopah",
+      "grup":"lokal"
+   },
+   {
+      "code":"MEQ",
+      "city":"Meulaboh",
+      "airport":"Cut Nyak Dhien",
+      "grup":"lokal"
+   },
+   {
+      "code":"NBX",
+      "city":"Nabire",
+      "airport":"Nabire",
+      "grup":"lokal"
+   },
+   {
+      "code":"NTX",
+      "city":"Natuna",
+      "airport":"Ranai",
+      "grup":"lokal"
+   },
+   {
+      "code":"NNX",
+      "city":"Nunukan",
+      "airport":"Nunukan Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"PDG",
+      "city":"Padang",
+      "airport":"Minangkabau Intl",
+      "grup":"lokal"
+   },
+   {
+      "code":"PKY",
+      "city":"Palangkaraya",
+      "airport":"Tjilik Riwut",
+      "grup":"lokal"
+   },
+   {
+      "code":"PLM",
+      "city":"Palembang",
+      "airport":"Sultan Mahmud Badaruddin Ii",
+      "grup":"lokal"
+   },
+   {
+      "code":"PLW",
+      "city":"Palu",
+      "airport":"Mutiara Sis Aljufri",
+      "grup":"lokal"
+   },
+   {
+      "code":"NSW",
+      "city":"Pangandaran",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"PGK",
+      "city":"Pangkal Pinang",
+      "airport":"Depati Amir",
+      "grup":"lokal"
+   },
+   {
+      "code":"PKN",
+      "city":"Pangkalan Bun",
+      "airport":"Iskandar",
+      "grup":"lokal"
+   },
+   {
+      "code":"PUM",
+      "city":"Pomala",
+      "airport":"Sangia Nibandera",
+      "grup":"lokal"
+   },
+   {
+      "code":"PNK",
+      "city":"Pontianak",
+      "airport":"Supadio",
+      "grup":"lokal"
+   },
+   {
+      "code":"PSJ",
+      "city":"Poso",
+      "airport":"Kasiguncu",
+      "grup":"lokal"
+   },
+   {
+      "code":"RTG",
+      "city":"Ruteng",
+      "airport":"Frans Sales Lega\/satartacik",
+      "grup":"lokal"
+   },
+   {
+      "code":"SRI",
+      "city":"Samarinda",
+      "airport":"Temindung",
+      "grup":"lokal"
+   },
+   {
+      "code":"SMQ",
+      "city":"Sampit",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"FLZ",
+      "city":"Sibolga",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"DTB",
+      "city":"Silangit",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"SOC",
+      "city":"Solo",
+      "airport":"Adi Soemarmo",
+      "grup":"lokal"
+   },
+   {
+      "code":"SOQ",
+      "city":"Sorong",
+      "airport":"Domine Eduard Osok",
+      "grup":"lokal"
+   },
+   {
+      "code":"SWQ",
+      "city":"Sumbawa",
+      "airport":"Sultan Mahmud Kaharuddin",
+      "grup":"lokal"
+   },
+   {
+      "code":"NAH",
+      "city":"Tahuna",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"TMC",
+      "city":"Waikabubak",
+      "airport":"Tambolaka Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"TJQ",
+      "city":"Tanjung Pandan",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"TNJ",
+      "city":"Tanjung Pinang",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"TRK",
+      "city":"Tarakan",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"TTE",
+      "city":"Ternate",
+      "airport":"Sultan Babullah",
+      "grup":"lokal"
+   },
+   {
+      "code":"TIM",
+      "city":"Timika",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"KAZ",
+      "city":"Tobelo",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"LUV",
+      "city":"Tual",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"WGP",
+      "city":"Waingapu",
+      "airport":"-",
+      "grup":"lokal"
+   },
+   {
+      "code":"WNI",
+      "city":"Wakatobi",
+      "airport":"Matahora",
+      "grup":"lokal"
+   },
+   
+   {
+      "code":"ZZV",
+      "city":"Zanesville, United States",
+      "airport":"-",
+      "grup":"internasional"
+   },
+   {
+      "code":"WMX",
+      "city":"Wamena",
+      "airport":"Wamena",
+      "grup":"lokal"
+   },
+   {
+      "code":"JBB",
+      "city":"Jember",
+      "airport":"Notohadinegoro",
+      "grup":"lokal"
+   },
+   {
+      "code":"YKR",
+      "city":"Selayar",
+      "airport":"H. Aroeppala",
+      "grup":"lokal"
+   },
+   {
+      "code":"RJM",
+      "city":"Raja Ampat",
+      "airport":"Marinda Raja Ampat Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"VPM",
+      "city":"Ampana",
+      "airport":"Tanjung Api Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"LLO",
+      "city":"Palopo",
+      "airport":"Lagaligo Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"TXE",
+      "city":"Takengon",
+      "airport":"Takengon Rembele Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"DEX",
+      "city":"Yahukimo",
+      "airport":"Dekai",
+      "grup":"lokal"
+   },
+   {
+      "code":"MLK",
+      "city":"Melak",
+      "airport":"Melalan",
+      "grup":"lokal"
+   },
+   {
+      "code":"AEG",
+      "city":"Tapanuli Selatan",
+      "airport":"Aek Godang Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"SMG",
+      "city":"Simeuleu",
+      "airport":"Lasikin Airport",
+      "grup":"lokal"
+   },
+   {
+      "code":"MLN",
+      "city":"Malinau",
+      "airport":"Robert Atty Bessing",
+      "grup":"lokal"
+   },
+   {
+      "code":"TSY",
+      "city":"Tasikmalaya ",
+      "airport":"Cibeureum Airfield",
+      "grup":"lokal"
+   }
+]
