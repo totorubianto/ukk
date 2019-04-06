@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2019 at 02:42 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Apr 06, 2019 at 04:56 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `ukk`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `daftar_kota`
+--
+
+CREATE TABLE `daftar_kota` (
+  `id_kota` int(11) NOT NULL,
+  `nama_kota` varchar(100) NOT NULL,
+  `kode_kota` varchar(10) NOT NULL,
+  `bandara` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `daftar_kota`
+--
+
+INSERT INTO `daftar_kota` (`id_kota`, `nama_kota`, `kode_kota`, `bandara`) VALUES
+(1, 'Jakarta', 'JKT', 'Soekarno Hatta'),
+(2, 'Bali', 'BALI', 'I gusti Ngurah Rai');
 
 -- --------------------------------------------------------
 
@@ -55,7 +76,6 @@ CREATE TABLE `pemesanan` (
   `id_pelanggan` int(30) NOT NULL,
   `kode_kursi` int(30) NOT NULL,
   `id_rute` int(30) NOT NULL,
-  `tujuan` varchar(50) NOT NULL,
   `tanggal_berangkat` datetime NOT NULL,
   `jam_cekin` time NOT NULL,
   `jam_berangkat` time NOT NULL,
@@ -67,8 +87,9 @@ CREATE TABLE `pemesanan` (
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_pemesanan`, `kode_pemesanan`, `tanggal_pemesanan`, `tempat_pemesanan`, `id_pelanggan`, `kode_kursi`, `id_rute`, `tujuan`, `tanggal_berangkat`, `jam_cekin`, `jam_berangkat`, `total_bayar`, `id_petugas`) VALUES
-(1, 1231, '2019-03-28 17:00:00', 'Purwokerto', 1, 122, 2, 'Jakarta', '2019-03-29 00:00:00', '22:00:00', '25:00:00', 250000, 1);
+INSERT INTO `pemesanan` (`id_pemesanan`, `kode_pemesanan`, `tanggal_pemesanan`, `tempat_pemesanan`, `id_pelanggan`, `kode_kursi`, `id_rute`, `tanggal_berangkat`, `jam_cekin`, `jam_berangkat`, `total_bayar`, `id_petugas`) VALUES
+(2, 123123, '2019-04-06 01:27:50', 'wangon', 1, 86, 19, '2019-04-16 00:00:00', '22:00:00', '15:00:00', 50000, 1),
+(3, 1231, '2019-04-06 01:49:40', 'jakarta', 1, 12, 19, '2019-04-08 00:00:00', '21:00:00', '12:00:00', 50000, 2);
 
 -- --------------------------------------------------------
 
@@ -125,9 +146,8 @@ INSERT INTO `petugas` (`id_petugas`, `username`, `password`, `nama_petugas`, `id
 CREATE TABLE `rute` (
   `id_rute` int(30) NOT NULL,
   `tujuan` varchar(50) NOT NULL,
-  `rute_awal` varchar(50) NOT NULL,
-  `rute_akhir` varchar(50) NOT NULL,
-  `harga` int(200) NOT NULL,
+  `rute_awal` int(50) NOT NULL,
+  `rute_akhir` int(50) NOT NULL,
   `id_transportasi` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -135,9 +155,10 @@ CREATE TABLE `rute` (
 -- Dumping data for table `rute`
 --
 
-INSERT INTO `rute` (`id_rute`, `tujuan`, `rute_awal`, `rute_akhir`, `harga`, `id_transportasi`) VALUES
-(1, 'Purwosari', 'Jogja', 'Bali', 500000, 1),
-(2, 'Purwokerto', 'Jakarta', 'Jambi', 250000, 2);
+INSERT INTO `rute` (`id_rute`, `tujuan`, `rute_awal`, `rute_akhir`, `id_transportasi`) VALUES
+(17, '2', 1, 2, 4),
+(18, '1', 2, 1, 5),
+(19, '2', 1, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -148,7 +169,7 @@ INSERT INTO `rute` (`id_rute`, `tujuan`, `rute_awal`, `rute_akhir`, `harga`, `id
 CREATE TABLE `transportasi` (
   `id_transportasi` int(30) NOT NULL,
   `kode` int(30) NOT NULL,
-  `jumlah kursi` int(20) NOT NULL,
+  `jumlah_kursi` int(20) NOT NULL,
   `id_type_transportasi` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -156,9 +177,10 @@ CREATE TABLE `transportasi` (
 -- Dumping data for table `transportasi`
 --
 
-INSERT INTO `transportasi` (`id_transportasi`, `kode`, `jumlah kursi`, `id_type_transportasi`) VALUES
-(1, 203, 680, 1),
-(2, 202, 680, 2);
+INSERT INTO `transportasi` (`id_transportasi`, `kode`, `jumlah_kursi`, `id_type_transportasi`) VALUES
+(2, 202, 130, 2),
+(4, 123, 150, 5),
+(5, 124, 130, 6);
 
 -- --------------------------------------------------------
 
@@ -169,20 +191,28 @@ INSERT INTO `transportasi` (`id_transportasi`, `kode`, `jumlah kursi`, `id_type_
 CREATE TABLE `type_transportasi` (
   `id_type_transportasi` int(30) NOT NULL,
   `nama_type` varchar(30) NOT NULL,
-  `keterangan` varchar(200) NOT NULL
+  `keterangan` varchar(200) NOT NULL,
+  `harga_transportasi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `type_transportasi`
 --
 
-INSERT INTO `type_transportasi` (`id_type_transportasi`, `nama_type`, `keterangan`) VALUES
-(1, 'Lion Air', 'LA-101'),
-(2, 'Airlangga', 'a-408');
+INSERT INTO `type_transportasi` (`id_type_transportasi`, `nama_type`, `keterangan`, `harga_transportasi`) VALUES
+(2, 'Airlangga', 'a-408', 1000000),
+(5, 'Garuda Indonesia', 'Merdeka', 4000),
+(6, 'Manuk Mabur', 'Emprit', 1000);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `daftar_kota`
+--
+ALTER TABLE `daftar_kota`
+  ADD PRIMARY KEY (`id_kota`);
 
 --
 -- Indexes for table `level`
@@ -217,7 +247,9 @@ ALTER TABLE `petugas`
 --
 ALTER TABLE `rute`
   ADD PRIMARY KEY (`id_rute`),
-  ADD KEY `id_transportasi` (`id_transportasi`);
+  ADD KEY `id_transportasi` (`id_transportasi`),
+  ADD KEY `rute_awal` (`rute_awal`),
+  ADD KEY `rute_akhir` (`rute_akhir`);
 
 --
 -- Indexes for table `transportasi`
@@ -237,6 +269,12 @@ ALTER TABLE `type_transportasi`
 --
 
 --
+-- AUTO_INCREMENT for table `daftar_kota`
+--
+ALTER TABLE `daftar_kota`
+  MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
@@ -246,7 +284,7 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pemesanan` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `penumpang`
@@ -264,19 +302,19 @@ ALTER TABLE `petugas`
 -- AUTO_INCREMENT for table `rute`
 --
 ALTER TABLE `rute`
-  MODIFY `id_rute` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_rute` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `transportasi`
 --
 ALTER TABLE `transportasi`
-  MODIFY `id_transportasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transportasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `type_transportasi`
 --
 ALTER TABLE `type_transportasi`
-  MODIFY `id_type_transportasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_type_transportasi` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
@@ -300,7 +338,9 @@ ALTER TABLE `petugas`
 -- Constraints for table `rute`
 --
 ALTER TABLE `rute`
-  ADD CONSTRAINT `rute_ibfk_1` FOREIGN KEY (`id_transportasi`) REFERENCES `transportasi` (`id_transportasi`);
+  ADD CONSTRAINT `rute_ibfk_1` FOREIGN KEY (`id_transportasi`) REFERENCES `transportasi` (`id_transportasi`),
+  ADD CONSTRAINT `rute_ibfk_2` FOREIGN KEY (`rute_awal`) REFERENCES `daftar_kota` (`id_kota`),
+  ADD CONSTRAINT `rute_ibfk_3` FOREIGN KEY (`rute_akhir`) REFERENCES `daftar_kota` (`id_kota`);
 
 --
 -- Constraints for table `transportasi`
