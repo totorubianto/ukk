@@ -8,12 +8,14 @@ class Admin extends CI_Controller {
 		$this->load->model("M_admin");
 		$this->load->library('session');
 	}
-
 	public function index(){
-		$data['kota']=$this->M_admin->getKota();
+		$search_rute_awal = $this->input->post('cari_rute_awal');
+		$search_rute_akhir = $this->input->post('cari_rute_akhir');
+		$data['rute_awal']=$this->M_admin->getRute_awal();
+		$data['rute_akhir']=$this->M_admin->getRute_akhir();
+		$data['rute']=$this->M_admin->getAllRute($search_rute_awal,$search_rute_akhir);
 		$this->load->view('admin/index',$data);
 	}
-	
 	public function addRute(){
 		$rute_awal = $this->input->post('rute_awal');
 		$rute_akhir = $this->input->post('rute_akhir');
@@ -23,10 +25,9 @@ class Admin extends CI_Controller {
 		$nama_type = $this->input->post('nama_type');
 		$keterangan = $this->input->post('keterangan');
 		$harga = $this->input->post('harga');
-		$this->M_admin->addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga);
+		$date = $this->input->post('date');
+		$jam = $this->input->post('jam');
+		$this->M_admin->addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam);
 	}
 
 }
-
-/* End of file Auth.php */
-/* Location: ./application/controllers/Auth.php */

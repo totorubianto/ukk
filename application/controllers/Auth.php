@@ -23,7 +23,7 @@ class Auth extends CI_Controller {
 			'username' => $username,
 			'password' => $password
 		);
-		$cek = $this->M_login->cek_petugas("petugas",$where);
+		$cek = $this->M_login->cek_petugas("users",$where);
 		
 	}
 	public function logout(){

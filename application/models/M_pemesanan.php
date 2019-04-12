@@ -21,21 +21,25 @@ class M_pemesanan extends CI_Model {
 		
 		return $this->db->get();
 	}
+
 	function rute_akhir(){
 		$this->db->select('*');
 		$this->db->from('daftar_kota');
-
+		$this->db->order_by('nama_kota ASC');
 		
 		return $this->db->get();
 	}
 
-	function getTransportasi($rute_awal,$rute_akhir){
+	function getTransportasi($rute_awal,$rute_akhir,$date){
 		$this->db->select('*');
 		$this->db->from('transportasi');
-		$this->db->join('type_transportasi', 'transportasi.id_type_transportasi = type_transportasi.id_type_transportasi');
+		$this->db->join('type_transportasi', 'transportasi.id_type_transportasi = type_transportasi.id_type_transportasi'
+	);
 		$this->db->join('rute', 'transportasi.id_transportasi = rute.id_transportasi');
+
 		$this->db->where('rute.rute_awal', $rute_awal);
 		$this->db->where('rute.rute_akhir', $rute_akhir);
+		$this->db->where('type_transportasi.hari', $date);
 		return $this->db->get();
 
 		// echo $row['nama_level'];
@@ -81,6 +85,17 @@ class M_pemesanan extends CI_Model {
 		// 	echo "Query failed!";
 		// }
 	}	
+	function postPemesanan($id_users,$kode_kursi,$id_rute,$kode_pemesanan,$tempat_pemesanan){
+		
+		$pemesanan = array( 
+			'kode_pemesanan'				=>  $kode_pemesanan,
+			'tempat_pemesanan'			=>  $tempat_pemesanan,
+			'id_users'	=>  $id_users,
+			'kode_kursi'	=>  $kode_kursi,
+			'id_rute'	=>  $id_rute,
+		);
+		$this->db->insert('pemesanan', $pemesanan);
+	}
 
 }
 

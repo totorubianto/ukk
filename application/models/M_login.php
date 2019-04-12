@@ -7,10 +7,9 @@ class M_login extends CI_Model {
 		$username=$where['username'];
 		$password=$where['password'];
 		$this->db->select('*');
-		$this->db->from('petugas');
-		$this->db->join('level', 'petugas.id_level = level.id_level');
-		$this->db->where('petugas.username', $username);
-		$this->db->where('petugas.password', $password);
+		$this->db->from('users');
+		$this->db->where('users.username', $username);
+		$this->db->where('users.password', $password);
 		
 		$query=$this->db->get();
 		$row = $query->row_array();
@@ -21,7 +20,8 @@ class M_login extends CI_Model {
 				'nama' => $username,
 				'status' => "login",
 				'level' => $row['nama_level'],
-				'id' => $row['id_petugas'],
+				'id' => $row['id_users'],
+				
 
 			);
 			

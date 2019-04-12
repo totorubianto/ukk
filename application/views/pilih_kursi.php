@@ -6,8 +6,7 @@
 <body>
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/style.css">
-    <?php   echo $this->uri->segment(1); ?>
-    <?php   echo $this->uri->segment(2); ?>
+ 
 
     <form method="post" action="<?php echo base_url() ?>pemesanan/addDataPesan/<?php echo $this->uri->segment(3);?>/<?php echo $this->uri->segment(4);?>/<?php   echo $this->uri->segment(5); ?>/<?php   echo $this->uri->segment(6); ?>/<?php echo $this->uri->segment(7); ?>"  >  
         <?php print("<pre>".print_r($pemesanan->result(),true)."</pre>"); ?>
@@ -23,7 +22,7 @@
                         $totos=$pemesanan->result_array();
 
 
-                        print_r($totos);
+                        
                         $numbers = array(6, 9, 2, 22, 11,25,69,47);
                         $jumlah_seat = $toto->jumlah_kursi;
 
