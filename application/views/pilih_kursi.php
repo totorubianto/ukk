@@ -5,13 +5,15 @@
 </head>
 <body>
 
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css">
  
 
     <form method="post" action="<?php echo base_url() ?>pemesanan/addDataPesan/<?php echo $this->uri->segment(3);?>/<?php echo $this->uri->segment(4);?>/<?php   echo $this->uri->segment(5); ?>/<?php   echo $this->uri->segment(6); ?>/<?php echo $this->uri->segment(7); ?>"  >  
-        <?php print("<pre>".print_r($pemesanan->result(),true)."</pre>"); ?>
-
+        <!-- <?php print("<pre>".print_r($transportasi->result(),true)."</pre>"); ?> -->
+        
         <div class="container">
+            
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -64,6 +66,10 @@
                     <div class="col-md-4"></div>
                 </div>
             </div>
+            
+            <input type="hidden" name="harga" value="<?php echo $toto->harga_transportasi ?>">
+            <input type="hidden" name="tanggal" value="<?php echo $toto->hari ?>">
+            <input type="hidden" name="jam" value="<?php echo $toto->jam ?>">
         </form>
 
 

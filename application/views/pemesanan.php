@@ -6,6 +6,7 @@
 <body>
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/style.css">
+        <?php echo validation_errors(); ?>
     <form method="post" action="<?php echo base_url() ?>pemesanan/getPesawat/">
         <input name="kode_pemesanan" type="hidden" value="<?php echo uniqid() ?>">  
         <input name="tempat_pemesanan" type="text" placeholder="tempat pemesanan">  
@@ -22,8 +23,8 @@
             <?php }?>
         </select>
         <input type="date" id="tanggal_berangkat" name="tanggal_berangkat">
-        
+
     </form>
-    
+   
 </body>
 </html>

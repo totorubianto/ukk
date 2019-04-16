@@ -1,0 +1,61 @@
+
+.bus {
+  border: 1px solid #ddd;
+  width: 20%;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+.bus.seat2-3 .seats .seat:nth-child(2), .bus.seat2-2 .seats .seat:nth-child(2) {
+  margin-right: 14.28571428571429%;
+}
+.bus.seat3-2 .seats .seat:nth-child(3) {
+  margin-right: 14.28571428571429%;
+}
+
+.seats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  -ms-flex-pack: center !important;
+  justify-content: center !important;
+  padding: 0;
+  margin-bottom: 2px;
+}
+.seats .seat {
+  display: flex;
+  flex: 0 0 14.28571428571429%;
+  padding: 3px;
+  position: relative;
+}
+.seats .seat label {
+  border-radius: 4px;
+  background: #3783b5;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 0.1rem;
+  display: inline-block;
+  font-size: 0.7rem;
+}
+.seats .seat input[type="radio"] {
+  display: none !important;
+}
+.seats .seat input[type="radio"] + label {
+  border-radius: 4px;
+  background: #3783b5;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px;
+  color: #fff;
+}
+.seats .seat input[type="radio"]:checked + label {
+  background: #46be8a;
+}
+.seats .seat input[type="radio"]:checked + label:after {
+  background: none;
+}
+.seats .seat input[type="radio"]:disabled + label {
+  cursor: not-allowed;
+  background: #f73737;
+}

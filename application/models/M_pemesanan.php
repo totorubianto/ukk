@@ -4,21 +4,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_pemesanan extends CI_Model {
 	
 	function getRute(){
-
 		$this->db->select('*');
 		$this->db->from('rute');
-
-		
 		return $this->db->get();
-
 		// echo $row['nama_level'];
 		// print_r($query);
 	}	
 	function rute_awal(){
 		$this->db->select('*');
 		$this->db->from('daftar_kota');
-
-		
 		return $this->db->get();
 	}
 
@@ -26,7 +20,6 @@ class M_pemesanan extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('daftar_kota');
 		$this->db->order_by('nama_kota ASC');
-		
 		return $this->db->get();
 	}
 
@@ -36,7 +29,6 @@ class M_pemesanan extends CI_Model {
 		$this->db->join('type_transportasi', 'transportasi.id_type_transportasi = type_transportasi.id_type_transportasi'
 	);
 		$this->db->join('rute', 'transportasi.id_transportasi = rute.id_transportasi');
-
 		$this->db->where('rute.rute_awal', $rute_awal);
 		$this->db->where('rute.rute_akhir', $rute_akhir);
 		$this->db->where('type_transportasi.hari', $date);
@@ -68,10 +60,10 @@ class M_pemesanan extends CI_Model {
 	}	
 	function addRute($id_transportasi,$tujuan,$rute_awal,$rute_akhir){
 		$data = array( 
-			'tujuan'	=>  $tujuan , 
-			'rute_awal'=>  $rute_awal, 
-			'rute_akhir'	=>  $rute_akhir,
-			'id_transportasi'	=>  $id_transportasi,
+			'tujuan'				=>  $tujuan , 
+			'rute_awal'				=>  $rute_awal, 
+			'rute_akhir'			=>  $rute_akhir,
+			'id_transportasi'		=>  $id_transportasi,
 		);
 		$this->db->insert('rute', $data);
 		$id_rute = $this->db->insert_id();
@@ -85,16 +77,40 @@ class M_pemesanan extends CI_Model {
 		// 	echo "Query failed!";
 		// }
 	}	
-	function postPemesanan($id_users,$kode_kursi,$id_rute,$kode_pemesanan,$tempat_pemesanan){
+	function postPemesanan($id_users,$kode_kursi,$id_rute,$kode_pemesanan,$tempat_pemesanan,$harga,$tanggal_berangkat,$jam){
 		
 		$pemesanan = array( 
-			'kode_pemesanan'				=>  $kode_pemesanan,
+			'kode_pemesanan'			=>  $kode_pemesanan,
 			'tempat_pemesanan'			=>  $tempat_pemesanan,
-			'id_users'	=>  $id_users,
-			'kode_kursi'	=>  $kode_kursi,
-			'id_rute'	=>  $id_rute,
+			'id_users'					=>  $id_users,
+			'kode_kursi'				=>  $kode_kursi,
+			'id_rute'					=>  $id_rute,
+			'total_bayar'				=>  $harga,
+			'tanggal_berangkat'			=>  $tanggal_berangkat,
+			'jam_berangkat'				=>  $jam
+
 		);
 		$this->db->insert('pemesanan', $pemesanan);
+		// $sql = "DELETE FROM pemesanan WHERE tanggal_pemesanan < NOW() - INTERVAL 1 MINUTE";
+		// $this->db->query($sql);
+	}
+	function daftarPemesanan(){
+		$id_users = $this->session->userdata('id');
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('users', 'pemesanan.id_users = users.id_users');
+		$this->db->where('pemesanan.id_users', $id_users);
+		$this->db->where('concat(pemesanan.tanggal_berangkat," ",pemesanan.jam_berangkat) > NOW()');
+		return $this->db->get();
+	}
+	function uploadBukti($kode_pemesanan,$bukti){
+		$data = array( 
+			'bukti'	=> $bukti
+		);
+		$where = array(
+			'kode_pemesanan' => $kode_pemesanan
+		);
+		$this->db->update('pemesanan', $data, $where);
 	}
 
 }

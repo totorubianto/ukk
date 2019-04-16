@@ -10,7 +10,6 @@ class M_login extends CI_Model {
 		$this->db->from('users');
 		$this->db->where('users.username', $username);
 		$this->db->where('users.password', $password);
-		
 		$query=$this->db->get();
 		$row = $query->row_array();
 		// echo $row['nama_level'];
@@ -19,18 +18,13 @@ class M_login extends CI_Model {
 			$data_session = array(
 				'nama' => $username,
 				'status' => "login",
-				'level' => $row['nama_level'],
 				'id' => $row['id_users'],
-				
-
 			);
-			
 			$this->session->set_userdata($data_session);
-
-			redirect(base_url("home/"));
+			redirect(base_url("index"));
 		}else{
-			echo "Username dan password salah !";
-			redirect(base_url("auth/login"));
+			
+			redirect('auth/login','refresh');
 		}
 		// print_r($query);
 	}	

@@ -12,7 +12,6 @@ class M_admin extends CI_Model {
 			$this->db->join('daftar_kota k1','rute.rute_awal = k1.id_kota','left');
 			$this->db->join('daftar_kota k2','rute.rute_akhir = k2.id_kota','left');
 			$this->db->order_by('id_rute','asc'); 
-
 			return $this->db->get();
 		}else {
 			$this->db->select('*');
@@ -25,8 +24,6 @@ class M_admin extends CI_Model {
 			$this->db->order_by('id_rute','asc'); 
 			$this->db->where('rute.rute_akhir', $search_rute_akhir);
 			$this->db->where('rute.rute_awal', $search_rute_awal);
-
-
 			return $this->db->get();
 		}
 		
