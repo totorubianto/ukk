@@ -4063,7 +4063,7 @@ fieldset[disabled] .select select:hover {
   border-style: solid;
   border-width: 1px 1px 1px 0;
   display: block;
-  max-width: 16em;
+  
   overflow: hidden;
   text-align: left;
   text-overflow: ellipsis;

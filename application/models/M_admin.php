@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_admin extends CI_Model {
-	public function getAllRute($search_rute_awal,$search_rute_akhir){
+	public function getAllRute($search_rute_awal,$search_rute_akhir,$limit,$start){
 		if (empty($search_rute_awal)) {
 			$this->db->select('*');
 			$this->db->from('rute');
@@ -12,6 +12,7 @@ class M_admin extends CI_Model {
 			$this->db->join('daftar_kota k1','rute.rute_awal = k1.id_kota','left');
 			$this->db->join('daftar_kota k2','rute.rute_akhir = k2.id_kota','left');
 			$this->db->order_by('id_rute','asc'); 
+			$this->db->limit($limit, $start); 
 			return $this->db->get();
 		}else {
 			$this->db->select('*');
@@ -39,7 +40,7 @@ class M_admin extends CI_Model {
 		$this->db->order_by('nama_kota ASC');
 		return $this->db->get();
 	}
-	public function addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam){
+	public function addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam,$vendor){
 
 		//Transportation_type
 		$transportasi_type = array( 
@@ -48,6 +49,7 @@ class M_admin extends CI_Model {
 			'harga_transportasi'	=>  $harga,
 			'hari'	=>  $date,
 			'jam'	=>  $jam,
+			'id_vendor'				=>  $vendor,
 		);
 		$this->db->insert('type_transportasi', $transportasi_type);
 		$id_transportasi_type = $this->db->insert_id();
@@ -57,6 +59,7 @@ class M_admin extends CI_Model {
 			'kode'					=>  $kode,
 			'jumlah_kursi'			=>  $jumlah_kursi,
 			'id_type_transportasi'	=>  $id_transportasi_type,
+
 		);
 		$this->db->insert('transportasi', $transportasi);
 		$id_transportasi = $this->db->insert_id();
@@ -80,6 +83,11 @@ class M_admin extends CI_Model {
 		$this->db->where('rute.rute_awal', $rute_awal);
 		$this->db->where('rute.rute_akhir', $rute_akhir);
 		$this->db->where('type_transportasi.hari', $date);
+		return $this->db->get();
+	}
+	public function getVendor(){
+		$this->db->select('*');
+		$this->db->from('vendor');
 		return $this->db->get();
 	}
 }
