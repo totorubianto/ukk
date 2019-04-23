@@ -318,6 +318,7 @@
 							</tr>
 						</thead>
 						<tbody>
+
 							<?php foreach ($rute->result() as $key) { ?>
 								<tr>
 									<td><?php echo $key->id_rute ?></td>
@@ -334,7 +335,7 @@
 											</a>
 											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
 												<a class="dropdown-item" href="#">Edit</a>
-												<a class="dropdown-item" href="#">Delete</a>
+												<a class="dropdown-item" href="<?php echo base_url() ?>admin/deleteRute/<?php echo $key->id_rute ?>/<?php echo $key->id_transportasi ?>/<?php echo $key->id_type_transportasi ?>">Delete</a>
 											</div>
 										</div>
 									</td>
@@ -343,15 +344,40 @@
 						</tbody>
 					</table>
 				</div>
-				 <div class="row">
-        <div class="col">
-            <!--Tampilkan pagination-->
-            <?php echo $pagination; ?>
-        </div>
-    </div>
+				<div class="row">
+					<div class="col">
+						<!--Tampilkan pagination-->
+						<?php echo $pagination; ?>
+					</div>
+				</div>
 			</div>
 		</div>
 		
 	</div>
 </div>
 
+<div class="modal fade" id="modal-viewedit">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">View/Edit Reservation</h4>
+			</div>
+			<div class="modal-body">
+
+				<!-- ################# -->
+				<div id="viewedit"></div>
+				<!-- ################# -->
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+				<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

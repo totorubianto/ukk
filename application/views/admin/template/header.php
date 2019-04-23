@@ -117,7 +117,7 @@
 					<!-- Navigation -->
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="./index.html">
+							<a class="nav-link" href="<?php echo base_url() ?>admin/">
 								<i class="ni ni-tv-2 text-primary"></i> Rute
 							</a>
 						</li>

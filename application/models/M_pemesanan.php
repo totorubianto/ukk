@@ -186,7 +186,7 @@ class M_pemesanan extends CI_Model {
 		);
 		$this->db->update('pemesanan', $data, $where);
 	}
-
+	
 }
 
 /* End of file login.php */

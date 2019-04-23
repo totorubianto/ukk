@@ -90,4 +90,30 @@ class M_admin extends CI_Model {
 		$this->db->from('vendor');
 		return $this->db->get();
 	}
+	public function getPemesanan1(){
+			$this->db->select('*');
+			$this->db->from('pemesanan');
+			$this->db->join('users', 'pemesanan.id_users = users.id_users');
+			$this->db->join('rute', 'rute.id_rute = pemesanan.id_rute');
+			$this->db->join('transportasi', 'transportasi.id_transportasi = rute.id_transportasi');
+			$this->db->join('type_transportasi', 'type_transportasi.id_type_transportasi = transportasi.id_type_transportasi');
+			return $this->db->get();
+	}
+	public function getPemesanan2($kode){
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->join('users', 'pemesanan.id_users = users.id_users');
+		$this->db->join('rute', 'rute.id_rute = pemesanan.id_rute');
+		$this->db->join('transportasi', 'transportasi.id_transportasi = rute.id_transportasi');
+		$this->db->join('type_transportasi', 'type_transportasi.id_type_transportasi = transportasi.id_type_transportasi');
+		$this->db->where('pemesanan.kode_pemesanan', $kode);
+		return $this->db->get();
+	}
+	public function get_reservation_id($id){
+		$this->db->select('*');
+		$this->db->from('pemesanan');
+		$this->db->where('pemesanan.id_pemesanan', $id);
+		return $this->db->get()->row_array();
+	}
+
 }

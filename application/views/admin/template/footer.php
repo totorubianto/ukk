@@ -5,6 +5,10 @@
 		<script src="<?php echo base_url() ?>assets/assets/vendor/chart.js/dist/Chart.extension.js"></script>
 		<!-- Argon JS -->
 		<script src="<?php echo base_url() ?>assets/assets/js/argon.js?v=1.0.0"></script>
+		<script>
+		document.getElementById('current_url').value = window.location.href;
+	</script>
+	<?php echo $script ?>
 	</body>
 
 	</html>
