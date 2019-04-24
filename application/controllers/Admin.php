@@ -51,23 +51,23 @@ class Admin extends CI_Controller {
         $this->load->view('admin/index',$data);
         $this->load->view('admin/template/footer',$data);
 
-    }
-    public function addRute(){
-    	$rute_awal = $this->input->post('rute_awal');
-    	$rute_akhir = $this->input->post('rute_akhir');
-    	$kode = $this->input->post('kode');
-    	$jumlah_kursi = $this->input->post('jumlah_kursi');
+      }
+      public function addRute(){
+       $rute_awal = $this->input->post('rute_awal');
+       $rute_akhir = $this->input->post('rute_akhir');
+       $kode = $this->input->post('kode');
+       $jumlah_kursi = $this->input->post('jumlah_kursi');
 		//type Transport
-    	$nama_type = $this->input->post('nama_type');
-    	$keterangan = $this->input->post('keterangan');
-    	$harga = $this->input->post('harga');
-    	$date = $this->input->post('date');
-    	$jam = $this->input->post('jam');
+       $nama_type = $this->input->post('nama_type');
+       $keterangan = $this->input->post('keterangan');
+       $harga = $this->input->post('harga');
+       $date = $this->input->post('date');
+       $jam = $this->input->post('jam');
 		//vendor
-    	$vendor = $this->input->post('vendor');
-    	$this->M_admin->addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam,$vendor);
-    }
-    public function deleterute($id_rute,$id_transportasi,$id_type_trasportasi){
+       $vendor = $this->input->post('vendor');
+       $this->M_admin->addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam,$vendor);
+     }
+     public function deleterute($id_rute,$id_transportasi,$id_type_trasportasi){
        $this->db->from("rute");
        $this->db->where("rute.id_rute", $id_rute);
        $this->db->delete('rute');
@@ -84,57 +84,83 @@ class Admin extends CI_Controller {
 
        redirect('admin/','refresh');
 
-   }
-   public function deletePemesanan($id){
+     }
+     public function deletePemesanan($id){
 
-     $this->db->from("penumpang");
-     $this->db->where("penumpang.id_pemesanan", $id);
-     $this->db->delete();
+       $this->db->from("penumpang");
+       $this->db->where("penumpang.id_pemesanan", $id);
+       $this->db->delete();
 
-     $this->db->from("pemesanan");
-     $this->db->where("pemesanan.id_pemesanan", $id);
-     $this->db->delete("pemesanan");
-     redirect('admin/pemesanan','refresh');
- }
- public function pemesanan(){
-    $pesan = $this->input->post('search');
-    if (!empty($pesan)) {
+       $this->db->from("pemesanan");
+       $this->db->where("pemesanan.id_pemesanan", $id);
+       $this->db->delete("pemesanan");
+       redirect('admin/pemesanan','refresh');
+     }
+     public function pemesanan(){
+      $pesan = $this->input->post('search');
+      if (!empty($pesan)) {
         $data['pemesanan']=$this->M_admin->getPemesanan2($pesan);
-    } else {
+      } else {
         $data['pemesanan']=$this->M_admin->getPemesanan1();
-    }
-    $script = '<script>
-    function viewedit(id){
-      $.ajax({url: "'.base_url().'admin/reservationedit/"+id, success: function(result){
-        $("#viewedit").html(result);
-        }});
-    }
-    </script>';
-    $data['script'] = $script;
-    $this->load->view('admin/template/header');
-    $this->load->view('admin/pemesanan',$data);
-    $this->load->view('admin/template/footer',$data);
-}
-public function reservationedit($id = null){
+      }
+      $script = '<script>
+      function viewedit(id){
+        $.ajax({url: "'.base_url().'admin/reservationedit/"+id, success: function(result){
+          $("#viewedit").html(result);
+          }});
+        }
+        </script>';
+        $data['script'] = $script;
+        $this->load->view('admin/template/header');
+        $this->load->view('admin/pemesanan',$data);
+        $this->load->view('admin/template/footer',$data);
+      }
+      public function reservationedit($id = null){
 
 
-    if($id == null){
-        redirect(base_url().'admin/pemesanan');
-    }
+        if($id == null){
+          redirect(base_url().'admin/pemesanan');
+        }
 
-    $data['reservation'] = $this->M_admin->get_reservation_id($id);
+        $data['reservation'] = $this->M_admin->get_reservation_id($id);
 
-    $this->load->view('admin/modelPemesanan',$data);
+        $this->load->view('admin/modelPemesanan',$data);
 
-}
-public function editStatusPemesanan($id){
-    $status=$this->input->post('status');
- $data = array( 
-    'status' => $status);
- $where = array(
-    'id_pemesanan' => $id);
- $this->db->update('pemesanan', $data, $where);
- redirect('admin/pemesanan','refresh');
-}
+      }
+      public function editStatusPemesanan($id){
+        $status=$this->input->post('status');
+        $data = array( 
+          'status' => $status);
+        $where = array(
+          'id_pemesanan' => $id);
+        $this->db->update('pemesanan', $data, $where);
+        redirect('admin/pemesanan','refresh');
+      }
+      public function vendor(){
+        $data['vendor']=$this->M_admin->vendor();
+        $script = '<script>
+        function viewedit(id){
+          $.ajax({url: "'.base_url().'admin/vendoredit/"+id, success: function(result){
+            $("#viewedit").html(result);
+            }});
+          }
+          </script>';
+          $data['script'] = $script;
+          $this->load->view('admin/template/header');
+          $this->load->view('admin/vendor',$data);
+          $this->load->view('admin/template/footer',$data);
+        }
+        public function vendoredit($id){
 
-}
+          echo "sayang";
+        }
+        public function deleteVendor($id){
+          $this->db->from("vendor");
+          $this->db->where("vendor.id_vendor", $id);
+          $this->db->delete("vendor");
+          
+          redirect('admin/vendor','refresh');
+
+        }
+
+      }

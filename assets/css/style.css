@@ -7,12 +7,21 @@ body{
 .background-blue{
   background-color: #F2F5F6;
 }
+.margin-bottom-30{
+  margin-bottom: 30px;
+}
 .margin-top-60{
   margin-top: 60px;
 }
 .padding-atas-bawah{
   padding-top: 50px;
   padding-bottom: 50px;
+}
+.padding-right-20{
+  padding-right: 20px;
+}
+.padding-left-10{
+  padding-left: 10px;
 }
 .padding-30{
   padding: 30px;
@@ -35,8 +44,17 @@ body{
 .margin-left-30{
   margin-left: 30px;
 }
+.padding-top-30{
+  padding-top: 30px;
+}
 .padding-top-100{
   padding-top: 100px;
+}
+.padding-top-20{
+  padding-top: 20px;
+}
+.padding-bottom-20{
+  padding-bottom: 20px;
 }
 .padding-top-200{
   padding-top: 200px;
@@ -153,6 +171,9 @@ body{
 .bus.seat3-2 .seats .seat:nth-child(3) {
   margin-right: 14.28571428571429%;
 }
+.display-flex{
+  display: flex;
+}
 
 .seats {
   display: flex;
@@ -205,7 +226,8 @@ body{
 .customer-color{
     width: 30px;
     height: 30px;
-    background-color:#4fc1e9;
+    border:1px solid #4fc1e9;
+    background-color:white;
     cursor:pointer;
     border-radius:5px;
 }

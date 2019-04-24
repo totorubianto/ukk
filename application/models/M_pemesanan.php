@@ -140,6 +140,17 @@ class M_pemesanan extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('pemesanan');
 		$this->db->join('users', 'pemesanan.id_users = users.id_users');
+		$this->db->join('rute', 'rute.id_rute = pemesanan.id_rute');
+		$this->db->join('transportasi', 'transportasi.id_transportasi = rute.id_transportasi');
+		$this->db->join('type_transportasi', 'type_transportasi.id_type_transportasi = transportasi.id_type_transportasi');
+		$this->db->join('vendor', 'vendor.id_vendor = type_transportasi.id_vendor');
+		$this->db->select('k1.nama_kota rute_awal,k2.nama_kota rute_akhir,k1.kode_kota rute_awal_kode,k2.kode_kota rute_akhir_kode,k1.bandara bandara_rute_awal,k2.bandara bandara_rute_akhir');
+		$this->db->join('daftar_kota k1','rute.rute_awal = k1.id_kota','left');
+		$this->db->join('daftar_kota k2','rute.rute_akhir = k2.id_kota','left');
+
+
+
+
 		$this->db->where('pemesanan.id_users', $id_users);
 		$this->db->where('concat(pemesanan.tanggal_berangkat," ",pemesanan.jam_berangkat) > NOW()');
 		return $this->db->get();
@@ -185,6 +196,20 @@ class M_pemesanan extends CI_Model {
 			'kode_pemesanan' => $kode_pemesanan
 		);
 		$this->db->update('pemesanan', $data, $where);
+	}
+	public function konsumerRute($id_rute){
+		$this->db->select('*');
+		$this->db->from('rute');
+
+		$this->db->join('transportasi', 'transportasi.id_transportasi = rute.id_transportasi');
+
+		$this->db->join('type_transportasi', 'type_transportasi.id_type_transportasi = transportasi.id_type_transportasi');
+
+		$this->db->where('rute.id_rute', $id_rute);
+		$this->db->select('k1.nama_kota rute_awal,k2.nama_kota rute_akhir,k1.kode_kota rute_awal_kode,k2.kode_kota rute_akhir_kode,k1.bandara bandara_rute_awal,k2.bandara bandara_rute_akhir');
+		$this->db->join('daftar_kota k1','rute.rute_awal = k1.id_kota','left');
+		$this->db->join('daftar_kota k2','rute.rute_akhir = k2.id_kota','left');
+		return $this->db->get();
 	}
 	
 }

@@ -16,6 +16,7 @@ class Index extends CI_Controller {
 		$data['rutes']=$this->M_pemesanan->getRute();
 		$data['rute_awal']=$this->M_pemesanan->rute_awal();
 		$data['rute_akhir']=$this->M_pemesanan->rute_akhir();
+		$this->load->view('template/header');
 		$this->load->view('index',$data);
 	}
 

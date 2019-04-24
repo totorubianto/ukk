@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
+
 <body>
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>css/style.css">

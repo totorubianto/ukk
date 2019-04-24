@@ -1,85 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bulma.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
 
-</head>
-
-<body>
-	<nav class="navbar" role="navigation" aria-label="main navigation">
-		<div class="container">
-
-			<div class="navbar-brand">
-				<a class="navbar-item" href="https://bulma.io">
-					<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-				</a>
-
-				<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
-			</div>
-
-			<div id="navbarBasicExample" class="navbar-menu">
-				<div class="navbar-start">
-					<a class="navbar-item">
-						Home
-					</a>
-
-					<a href="<?php echo base_url('pemesanan/daftarpemesanan'); ?>" class="navbar-item">
-						Pemesanan
-					</a>
-
-					<div class="navbar-item has-dropdown is-hoverable">
-						<a class="navbar-link">
-							More
-						</a>
-
-						<div class="navbar-dropdown">
-							<a class="navbar-item">
-								About
-							</a>
-							<a class="navbar-item">
-								Jobs
-							</a>
-							<a class="navbar-item">
-								Contact
-							</a>
-							<hr class="navbar-divider">
-							<a class="navbar-item">
-								Report an issue
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="navbar-end">
-					<div class="navbar-item">
-						<?php
-						if (!empty($this->session->userdata('nama'))) {?>
-							<div class="buttons">
-								<a href="<?php echo base_url('auth/logout'); ?>" class="button is-light">
-									<?php echo $this->session->userdata('nama'); ?>
-								</a>
-							</div>
-						<?php } else {?>
-							<a class="button is-primary">
-								<strong>Sign up</strong>
-							</a>
-							<a href="<?php echo base_url('auth/login'); ?>" class="button is-light">
-								Log in
-							</a>
-						<?php }?>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</nav>
 	<section class="hero background3 is-medium  absolute">
 		<div class="hero-body">
 			<div class="container"></div>
@@ -107,7 +26,7 @@
 								<p class="subtitle is-6"><?php echo $rute->jam ?></p>
 							</div>
 							<div class="col-md-4">
-								<p class="subtitle is-6">Harga Rp.<?php echo $rute->harga_transportasi ?></p>
+								<p class="subtitle is-6">Harga <?php echo "Rp." . strrev(implode('.', str_split(strrev(strval($rute->harga_transportasi)), 3))) . ',-'?></p>
 							</div>
 						</div>
 
@@ -155,79 +74,101 @@
 							<tr>
 								<td>Harga Tiket</td>
 								<td>:</td>
-								<td>4.000.000</td>
-							</tr>
-							<tr>
-								<td>Jumlah Penumpang</td>
-								<td>:</td>
-								<td>2</td>
-							</tr>
-							<tr class="">
-								<td class="color-orange">Total Harga</td>
-								<td class="color-orange">:</td>
-								<td class="color-orange">5.000.000</td>
-							</tr>
-						</table>
-					</div>
+								<td>
+									<?php echo "Rp." . strrev(implode('.', str_split(strrev(strval($rute->harga_transportasi)), 3)))  . ',-'?>
 
-					<div class="card padding-30 margin-top-30">
-						<?php echo form_open_multipart(base_url().'pemesanan/uploadBukti/'.$this->uri->segment(3));?>
+									
+								</tr>
+								<tr>
+									<td>Jumlah Penumpang</td>
+									<td>:</td>
+									<td><?php echo count($data2->result()) . ' Penumpang' ?></td>
+								</tr>
+								<tr class="">
+									<td class="color-orange">Total Harga</td>
+									<td class="color-orange">:</td>
+									<td class="color-orange">
+										<?php
+										$kalimat =  $this->uri->segment(3);
+										$kode = substr($kalimat,4);
+
+// 456789
+										?>
+										<?php echo "Rp." . strrev(implode('.', str_split(strrev(strval($rute->harga_transportasi * count($data2->result())+ $kode)), 3))) . ',-' ?>
+									</td>
+								</tr>
+							</table>
+						</div>
 						<?php $result=$data->row() ?>
-						<p class="title is-5">Kirim Bukti</p>
-						<p class="title is-6">
-							Your Booking successfull, to finish your payment, please transfer your money to :
-						</p>
-						<table>
-							<tr>
-								<td>Mandiri</td>
-								<td>:</td>
-								<td>9000 0267 1828</td>
-							</tr>
-							<tr>
-								<td>BCA</td>
-								<td>:</td>
-								<td>9872 1231 1231</td>
-							</tr>
-							<tr>
-								<td>BRI</td>
-								<td>:</td>
-								<td>5671 1282 9271</td>
-							</tr>
-						</table>
-						<p class="title is-6 margin-top-30">Upload your proof of payment</p>
+<?php if ($result->status==1) { ?>
+	<div class="card padding-30 margin-top-30">
+		<h1 class="title color-orange">
+			Terbayar
+		</h1>
+	</div>
 
-
-						<?php if (!empty($result->bukti)) {?>
-							<img class="width100" src="<?php echo base_url() ?>assets/img/bukti/<?php echo $result->bukti ?>">
-							<p>Menunggu Konfirmasi</p>
-
-						<?php } else { ?>
-							<div class="file has-name is-boxed width100">
-								<label class="file-label width100">
-									<input class="file-input width100" type="file" name="bukti">
-									<span class="file-cta width100">
-										<span class="file-icon width100">
-											<i class="fas fa-upload width100"></i>
-										</span>
-										<span class="file-label ">
-											Choose a file…
-										</span>
-									</span>
-									<span class="file-name max-size width100">
-										Kirimkan bukti dan tunggu confirmasi
-									</span>
-								</label>
-							</div>
+<?php } else { ?>
+	<div class="card padding-30 margin-top-30">
+							<?php echo form_open_multipart(base_url().'pemesanan/uploadBukti/'.$this->uri->segment(3));?>
 							
-							<input class="margin-top-30 button is-universal width100 is-primary" type="submit" name="submit">
-						<?php }?>
+							<p class="title is-5">Kirim Bukti</p>
+							<p class="title is-6">
+								Your Booking successfull, to finish your payment, please transfer your money to :
+							</p>
+							<table>
+								<tr>
+									<td>Mandiri</td>
+									<td>:</td>
+									<td>9000 0267 1828</td>
+								</tr>
+								<tr>
+									<td>BCA</td>
+									<td>:</td>
+									<td>9872 1231 1231</td>
+								</tr>
+								<tr>
+									<td>BRI</td>
+									<td>:</td>
+									<td>5671 1282 9271</td>
+								</tr>
+							</table>
+							<p class="title is-6 margin-top-30">Upload your proof of payment</p>
 
 
-						<?php echo form_close(); ?> 
+							<?php if (!empty($result->bukti)) {?>
+								<img class="width100" src="<?php echo base_url() ?>assets/img/bukti/<?php echo $result->bukti ?>">
+								<p>Menunggu Konfirmasi</p>
+
+							<?php } else { ?>
+								<div class="file has-name is-boxed width100">
+									<label class="file-label width100">
+										<input class="file-input width100" type="file" name="bukti">
+										<span class="file-cta width100">
+											<span class="file-icon width100">
+												<i class="fas fa-upload width100"></i>
+											</span>
+											<span class="file-label ">
+												Choose a file…
+											</span>
+										</span>
+										<span class="file-name max-size width100">
+											Kirimkan bukti dan tunggu confirmasi
+										</span>
+									</label>
+								</div>
+
+								<input class="margin-top-30 button is-universal width100 is-primary" type="submit" name="submit">
+							<?php }?>
+
+
+							<?php echo form_close(); ?> 
+						</div>
+
+<?php }?>
+						
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</body>
-	</html>
+		</body>
+		</html>

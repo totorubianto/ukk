@@ -20,6 +20,7 @@ class Pemesanan extends CI_Controller {
         $data['rute_awal'] = $_POST['rute_awal'];
         $data['rute_akhir'] = $_POST['rute_akhir'];
         $data['tanggal_berangkat'] = $_POST['tanggal_berangkat'];
+        $this->load->view('template/header');
         $this->load->view('pilih_transportasi',$data);
     }
     public function addDataPesan(){
@@ -47,7 +48,9 @@ class Pemesanan extends CI_Controller {
         $data['data']=$this->M_pemesanan->getPemesananReview($kode_pemesanan);
         $data['data2']=$this->M_pemesanan->getPemesananReview2($kode_pemesanan);
         $data['data3']=$this->M_pemesanan->getPemesananReview3($kode_pemesanan);
+        $this->load->view('template/header');
         $this->load->view('upload',$data);
+
     }
     public function uploadBukti($kode_pemesanan){
         $kode_pemesananw = $this->uri->segment(3);
@@ -110,20 +113,24 @@ class Pemesanan extends CI_Controller {
                $data['rute_awal'] = $_POST['rute_awal'];
                $data['rute_akhir'] = $_POST['rute_akhir'];
                $data['tanggal_berangkat'] = $_POST['tanggal_berangkat'];
+               $this->load->view('template/header');
                $this->load->view('pilih_transportasi',$data);
            }else{
             $data['rutes']=$this->M_pemesanan->getRute();
             $data['rute_awal']=$this->M_pemesanan->rute_awal();
             $data['rute_akhir']=$this->M_pemesanan->rute_akhir();
+            $this->load->view('template/header');
             $this->load->view('index',$data);
         }
     }
 
 }
 public function getConsumer($id_transportasi){
-    $data['pemesanan']=$this->M_pemesanan->getPemesanan($id_transportasi);
-    $data['transportasi']=$this->M_pemesanan->getTransportasiId($id_transportasi);
-    $this->load->view('konsumer');
+
+    $data['pemesanan']=$this->M_pemesanan->konsumerRute($id_transportasi);
+    
+    $this->load->view('template/header');
+    $this->load->view('konsumer',$data);
 }
 public function getKursi($id_transportasi){
 
@@ -149,11 +156,22 @@ public function getKursi($id_transportasi){
         $data['data_form'] = $customer_data['form_customer']['name'];
         $data['pemesanan']=$this->M_pemesanan->getPemesanan($id_transportasi);
         $data['transportasi']=$this->M_pemesanan->getTransportasiId($id_transportasi);
+        $this->load->view('template/header');
         $this->load->view('pilih_kursi',$data);
     }
     public function daftarPemesanan(){
         $data['daftarPemesanan']=$this->M_pemesanan->daftarPemesanan();
+        
+
+        $this->load->view('template/header');
         $this->load->view('daftar_pesanan',$data);
+    }
+    public function ticket($kode_pemesanan){
+         $data['data']=$this->M_pemesanan->getPemesananReview($kode_pemesanan);
+        $data['data2']=$this->M_pemesanan->getPemesananReview2($kode_pemesanan);
+        $data['data3']=$this->M_pemesanan->getPemesananReview3($kode_pemesanan);
+        $this->load->view('template/header');
+        $this->load->view('ticket',$data);
     }
 }
 

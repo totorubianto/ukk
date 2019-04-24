@@ -1,87 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/bulma.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/css/style.css">
 
-</head>
-<body>
-
-	
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="container">
-
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
-                    <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-                </a>
-
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item">
-                        Home
-                    </a>
-
-                    <a href="<?php echo base_url('pemesanan/daftarpemesanan'); ?>" class="navbar-item">
-                        Pemesanan
-                    </a>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            More
-                        </a>
-
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                About
-                            </a>
-                            <a class="navbar-item">
-                                Jobs
-                            </a>
-                            <a class="navbar-item">
-                                Contact
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                                Report an issue
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <?php
-                        if (!empty($this->session->userdata('nama'))) {?>
-                            <div class="buttons">
-                                <a href="<?php echo base_url('auth/logout'); ?>" class="button is-light">
-                                    <?php echo $this->session->userdata('nama'); ?>
-                                </a>
-                            </div>
-                        <?php } else {?>
-                            <a class="button is-primary">
-                                <strong>Sign up</strong>
-                            </a>
-                            <a href="<?php echo base_url('auth/login'); ?>" class="button is-light">
-                                Log in
-                            </a>
-                        <?php }?>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <section class="hero is-primary">
+    
+    <section class="hero is-info">
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
@@ -93,29 +12,103 @@
     </div>
 </div>
 </section>
+
 <div class="container">
     <div class="row">
         <div class="col-md-7">
             <form method="post" action="<?php echo base_url() ?>pemesanan/getKursi/<?php echo $this->uri->segment(3);?>/<?php echo $this->uri->segment(4);?>/<?php   echo $this->uri->segment(5); ?>/<?php echo $this->uri->segment(6); ?>">
-                <input name="kode_pemesanan" type="hidden" value="<?php echo uniqid() ?>">  
+                <input name="kode_pemesanan" type="hidden" value="<?php echo 'ULUM' . mt_rand(100, 300) ?>">  
+
+
                 <?php for ($i=0; $i < $this->uri->segment(6); ) { ?>
-                    Penumpang <?php echo $i++ ?><br>
-                    <input type="text" name="nama_pelanggan[]" placeholder="nama"> <br>
-                    <input type="text" name="alamat[]" placeholder="alamat"> <br>
-                    <input type="text" name="phone[]" placeholder="phone"> <br>
-                    <input type="text" name="email[]" placeholder="email"> <br>
-                    <input type="text" name="gender[]" placeholder="gender"> <br>
-                <?php } ?>
-                <input type="submit" name="">
-            </form>
-          
-        </div>
-        <div class="col-md-5">
-            <div class="card padding-30 margin-top-30">
-                asda    
-            </div>
-        </div>
+                    <div class="card padding-30 margin-top-30 margin-bottom-30">
+                        <p>Penumpang <?php echo $i++ +1 ?></p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="field">
+                                  <label class="label">Nama</label>
+                                  <div class="control">
+                                     <input class="input" type="text" name="nama_pelanggan[]" placeholder="nama">
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="col-md-6">
+                            <div class="field">
+                              <label class="label">Alamat</label>
+                              <div class="control">
+                                  <input class="input" type="text" name="alamat[]" placeholder="alamat"> 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-6">
+                        <div class="field">
+                          <label class="label">Phone</label>
+                          <div class="control">
+                           <input class="input" type="text" name="phone[]" placeholder="phone">
+                       </div>
+                   </div>
+               </div>
+               <div class="col-md-6">
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control">
+                      <input class="input" type="text" name="email[]" placeholder="email">
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <div class="field">
+          <label class="label">Gender</label>
+          <div class="control">
+            <select name="gender[]" class="input">
+              <option value="1">Laki - Laki</option>
+              <option value="0">Perempuan</option>
+              
+            </select>
+          </div>
+      </div>
+  </div>
+<?php } ?>
+<input class="button is-info is-fullwidth margin-bottom-30" type="submit" name="">
+</form>
+
+</div>
+<div class="col-md-5">
+    <div class="card padding-30 margin-top-30">
+
+        <?php $data=$pemesanan->row_array() ?>
+        <p class="title is-4">Pesawat <?php echo $data['nama_type'] ?></p>
+        <p class="subtitle is-6"><?php echo $data['bandara_rute_awal'] ?> -> <?php echo $data['bandara_rute_akhir'] ?></p>
+        <table>
+            <tr>
+                <td>Harga</td>
+                <td>=</td>
+                <td>
+                    <?php echo "Rp." . strrev(implode('.', str_split(strrev(strval($data['harga_transportasi'])), 3))) ?>
+                    
+            </tr>
+            <tr>
+                <td>Total Penumpang</td>
+                <td>=</td>
+                <td><?php echo $this->uri->segment(6) ?> Orang</td>
+            </tr>
+            <tr>
+                <td>Jumlah Harga</td>
+                <td>=</td>
+                <td>
+                    <?php echo "Rp." . strrev(implode('.', str_split(strrev(strval($data['harga_transportasi'] * $this->uri->segment(6) +mt_rand(100, 300))), 3))) ?>
+            </tr>
+        </table>
+        <p></p>
     </div>
+</div>
+</div>
 </div>
 
 

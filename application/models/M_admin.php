@@ -115,5 +115,10 @@ class M_admin extends CI_Model {
 		$this->db->where('pemesanan.id_pemesanan', $id);
 		return $this->db->get()->row_array();
 	}
+	public function vendor(){
+		$this->db->select('*');
+		$this->db->from('vendor');
+		return $this->db->get();
+	}
 
 }

@@ -16,7 +16,7 @@
 		<!-- Favicon -->
 		<link href="<?php echo base_url() ?>assets/assets/img/brand/favicon.png" rel="icon" type="image/png">
 		<!-- Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+		
 		<!-- Icons -->
 		<link href="<?php echo base_url() ?>assets/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
 		<link href="<?php echo base_url() ?>assets/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -34,7 +34,7 @@
 				</button>
 				<!-- Brand -->
 				<a class="navbar-brand pt-0" href="./index.html">
-					<img src="<?php echo base_url() ?>assets/assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+					<img src="<?php echo base_url() ?>assets/img/logo.png" class="navbar-brand-img" alt="...">
 				</a>
 				<!-- User -->
 				<ul class="nav align-items-center d-md-none">
@@ -125,12 +125,10 @@
 							<a class="nav-link" href="<?php echo base_url() ?>admin/pemesanan">
 								<i class="ni ni-planet text-blue"></i> Pemesanan
 							</a>
+							<a class="nav-link" href="<?php echo base_url() ?>admin/vendor">
+								<i class="ni ni-planet text-blue"></i> Vendor
+							</a>
 						</li>
-						
-						
-						
-						
-						
 					</ul>
 					<!-- Divider -->
 					<hr class="my-3">

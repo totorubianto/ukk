@@ -11,6 +11,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | of this setting
 |
 */
+define('nama_ku', 'Toifatul');
+
+
+
 defined('SHOW_DEBUG_BACKTRACE') OR define('SHOW_DEBUG_BACKTRACE', TRUE);
 
 /*

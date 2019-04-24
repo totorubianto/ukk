@@ -25,7 +25,7 @@
 								<img alt="Image placeholder" src="<?php echo base_url() ?>assets/assets/img/theme/team-4-800x800.jpg">
 							</span>
 							<div class="media-body ml-2 d-none d-lg-block">
-								<span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+								<span class="mb-0 text-sm  font-weight-bold"><?php echo nama_ku ?></span>
 							</div>
 						</div>
 					</a>
@@ -327,18 +327,18 @@
 									<td><?php echo $key->hari ?></td>
 									<td><?php echo $key->jam ?></td>
 									<td><?php echo $key->nama_type ?></td>
-
-									<td class="text-right">
-										<div class="dropdown">
-											<a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<i class="fas fa-ellipsis-v"></i>
-											</a>
-											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-												<a class="dropdown-item" href="#">Edit</a>
-												<a class="dropdown-item" href="<?php echo base_url() ?>admin/deleteRute/<?php echo $key->id_rute ?>/<?php echo $key->id_transportasi ?>/<?php echo $key->id_type_transportasi ?>">Delete</a>
+<td class="text-right">
+											<div class="dropdown">
+												<a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+													<i class="fas fa-ellipsis-v"></i>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" style="padding: 10px;">													
+													<a class="btn btn-danger " style="width: 100%" href="<?php echo base_url() ?>admin/deleteRute/<?php echo $key->id_rute ?>/<?php echo $key->id_transportasi ?>/<?php echo $key->id_type_transportasi ?>">Delete</a>
+												</div>
 											</div>
-										</div>
-									</td>
+										</td>
+
+									
 								</tr>
 							<?php } ?>	
 						</tbody>
