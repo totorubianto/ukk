@@ -102,20 +102,20 @@ class Pemesanan extends CI_Controller {
 
             if($this->form_validation->run() != false){
 
-               $rute_awal=$_POST['rute_awal'];
-               $rute_akhir=$_POST['rute_akhir'];
-               $date=$_POST['tanggal_berangkat'];
-               $data['rute'] =$this->M_pemesanan->getRuteKota($rute_awal,$rute_akhir);
-               $data['transportasi']=$this->M_pemesanan->getTransportasi($rute_awal,$rute_akhir,$date);
-               $data['jumlah_pemesanan']=$_POST['jumlah_pemesanan'];
+             $rute_awal=$_POST['rute_awal'];
+             $rute_akhir=$_POST['rute_akhir'];
+             $date=$_POST['tanggal_berangkat'];
+             $data['rute'] =$this->M_pemesanan->getRuteKota($rute_awal,$rute_akhir);
+             $data['transportasi']=$this->M_pemesanan->getTransportasi($rute_awal,$rute_akhir,$date);
+             $data['jumlah_pemesanan']=$_POST['jumlah_pemesanan'];
 
-               $data['tempat_pemesanan'] = $_POST['tempat_pemesanan'];
-               $data['rute_awal'] = $_POST['rute_awal'];
-               $data['rute_akhir'] = $_POST['rute_akhir'];
-               $data['tanggal_berangkat'] = $_POST['tanggal_berangkat'];
-               $this->load->view('template/header');
-               $this->load->view('pilih_transportasi',$data);
-           }else{
+             $data['tempat_pemesanan'] = $_POST['tempat_pemesanan'];
+             $data['rute_awal'] = $_POST['rute_awal'];
+             $data['rute_akhir'] = $_POST['rute_akhir'];
+             $data['tanggal_berangkat'] = $_POST['tanggal_berangkat'];
+             $this->load->view('template/header');
+             $this->load->view('pilih_transportasi',$data);
+         }else{
             $data['rutes']=$this->M_pemesanan->getRute();
             $data['rute_awal']=$this->M_pemesanan->rute_awal();
             $data['rute_akhir']=$this->M_pemesanan->rute_akhir();
@@ -134,6 +134,21 @@ public function getConsumer($id_transportasi){
 }
 public function getKursi($id_transportasi){
 
+  $this->form_validation->set_rules('nama_pelanggan[]', 'nama_pelanggan', 'required');
+  $this->form_validation->set_rules('alamat[]', 'alamat', 'required');
+  $this->form_validation->set_rules('phone[]', 'phone', 'required');
+  $this->form_validation->set_rules('email[]', 'email', 'required');
+  $this->form_validation->set_rules('gender[]', 'gender', 'required');
+  if ($this->form_validation->run() == FALSE)
+  {
+    $data['pemesanan']=$this->M_pemesanan->konsumerRute($id_transportasi);
+
+    $this->load->view('template/header');
+    $this->load->view('konsumer',$data);
+    
+}
+else
+{
     $name = $this->input->post('nama_pelanggan');
     $address = $this->input->post('alamat');
     $phone = $this->input->post('phone');
@@ -149,7 +164,7 @@ public function getKursi($id_transportasi){
         'gender' => $gender,
         'kode_pemesanan' => $kode_pemesanan
     ];
-    
+
         $value['form_customer'] = $form_customer; // add form_customer to session
         $this->session->set_userdata($value);
         $customer_data = $this->session->userdata();
@@ -158,21 +173,24 @@ public function getKursi($id_transportasi){
         $data['transportasi']=$this->M_pemesanan->getTransportasiId($id_transportasi);
         $this->load->view('template/header');
         $this->load->view('pilih_kursi',$data);
-    }
-    public function daftarPemesanan(){
-        $data['daftarPemesanan']=$this->M_pemesanan->daftarPemesanan();
         
+    }
 
-        $this->load->view('template/header');
-        $this->load->view('daftar_pesanan',$data);
-    }
-    public function ticket($kode_pemesanan){
-         $data['data']=$this->M_pemesanan->getPemesananReview($kode_pemesanan);
-        $data['data2']=$this->M_pemesanan->getPemesananReview2($kode_pemesanan);
-        $data['data3']=$this->M_pemesanan->getPemesananReview3($kode_pemesanan);
-        $this->load->view('template/header');
-        $this->load->view('ticket',$data);
-    }
+}
+public function daftarPemesanan(){
+    $data['daftarPemesanan']=$this->M_pemesanan->daftarPemesanan();
+
+
+    $this->load->view('template/header');
+    $this->load->view('daftar_pesanan',$data);
+}
+public function ticket($kode_pemesanan){
+   $data['data']=$this->M_pemesanan->getPemesananReview($kode_pemesanan);
+   $data['data2']=$this->M_pemesanan->getPemesananReview2($kode_pemesanan);
+   $data['data3']=$this->M_pemesanan->getPemesananReview3($kode_pemesanan);
+   $this->load->view('template/header');
+   $this->load->view('ticket',$data);
+}
 }
 
 /* End of file Index.php */

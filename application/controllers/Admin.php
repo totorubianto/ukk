@@ -2,21 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model("M_admin");
-		$this->load->library('pagination');
-		$this->load->library('session');
-	}
-	public function index(){
-		     $config['base_url'] = site_url('admin/index'); //site url
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model("M_admin");
+    $this->load->library('pagination');
+    $this->load->library('session');
+    $this->load->helper(array('form', 'url'));
+  }
+  
+  public function index(){
+         $config['base_url'] = site_url('admin/index'); //site url
         $config['total_rows'] = $this->db->count_all('rute'); //total row
         $config['per_page'] = 5;  //show record per halaman
         $config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];
         $config["num_links"] = floor($choice);
-		 // Membuat Style pagination untuk BootStrap v4
+     // Membuat Style pagination untuk BootStrap v4
         $config['first_link']       = 'First';
         $config['last_link']        = 'Last';
         $config['next_link']        = 'Next';
@@ -57,13 +59,13 @@ class Admin extends CI_Controller {
        $rute_akhir = $this->input->post('rute_akhir');
        $kode = $this->input->post('kode');
        $jumlah_kursi = $this->input->post('jumlah_kursi');
-		//type Transport
+    //type Transport
        $nama_type = $this->input->post('nama_type');
        $keterangan = $this->input->post('keterangan');
        $harga = $this->input->post('harga');
        $date = $this->input->post('date');
        $jam = $this->input->post('jam');
-		//vendor
+    //vendor
        $vendor = $this->input->post('vendor');
        $this->M_admin->addRute($rute_awal,$rute_akhir,$kode,$jumlah_kursi,$nama_type,$keterangan,$harga,$date,$jam,$vendor);
      }
@@ -150,10 +152,7 @@ class Admin extends CI_Controller {
           $this->load->view('admin/vendor',$data);
           $this->load->view('admin/template/footer',$data);
         }
-        public function vendoredit($id){
-
-          echo "sayang";
-        }
+        
         public function deleteVendor($id){
           $this->db->from("vendor");
           $this->db->where("vendor.id_vendor", $id);
@@ -161,6 +160,55 @@ class Admin extends CI_Controller {
           
           redirect('admin/vendor','refresh');
 
+        }
+        public function tambahVendor(){
+          $nama_vendor = $this->input->post('nama_vendor');
+          $config['upload_path'] ='./assets/img/vendor/';
+          $config['allowed_types'] = 'gif|jpg|png';
+          $config['encrypt_name'] = TRUE;
+
+          $this->load->library('upload', $config);
+
+          if ( ! $this->upload->do_upload('gambar')){
+            $error = array('error' => $this->upload->display_errors());
+            print_r($error);
+          }
+          else{
+            $files=$this->upload->data();
+            $gambar=$files['file_name'];
+            $this->M_admin->tambahvendor($gambar,$nama_vendor);
+          }
+          redirect('admin/vendor','refresh');
+
+          
+        }
+
+        public function login()
+        {
+          $this->load->view('admin/login');
+        }
+      
+        public function login_aksi(){
+          $username = $this->input->post('username');
+          $password = $this->input->post('password');
+
+          $where = array(
+            'username' => $username,
+            'password' => $password
+          );
+          $cek = $this->M_admin->cek_petugas("users",$where);
+
+        }
+        public function logout(){
+          $this->session->unset_userdata('nama_admin');
+          $this->session->unset_userdata('status_admin');          
+          $this->session->unset_userdata('id_level');  
+          $this->session->sess_destroy('userdata');
+
+          redirect('admin/login','refresh');   
+        }
+        public function showsession(){
+          print_r($this->session->userdata());
         }
 
       }

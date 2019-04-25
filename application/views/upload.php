@@ -5,7 +5,7 @@
 		</div>
 	</section>
 	<?php $rute=$data3->row() ?>
-	<div class="container    relative">
+	<div class="container relative">
 		<div class="padding-30 background-white card">
 			<div class="row">
 				<div class="col-md-2 background-white">

@@ -2,6 +2,31 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_admin extends CI_Model {
+	function cek_petugas($table,$where){
+		$username=$where['username'];
+		$password=$where['password'];
+		$this->db->select('*');
+		$this->db->from('petugas');
+		$this->db->where('petugas.username', $username);
+		$this->db->where('petugas.password', $password);
+		$query=$this->db->get();
+		$row = $query->row_array();
+		// echo $row['nama_level'];
+		if($row > 0){
+
+			$admin = array(
+				'nama_admin' => $username,
+				'status_admin' => "login",
+				'id_level' => $row['id_level'],
+			);
+			$this->session->set_userdata($admin);
+			redirect(base_url("admin/index"));
+		}else{
+			
+			redirect('admin/login','refresh');
+		}
+		// print_r($query);
+	}	
 	public function getAllRute($search_rute_awal,$search_rute_akhir,$limit,$start){
 		if (empty($search_rute_awal)) {
 			$this->db->select('*');
@@ -119,6 +144,14 @@ class M_admin extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('vendor');
 		return $this->db->get();
+	}
+	public function tambahVendor($img,$nam_vendor){
+		$vendor = array( 
+			'img'				=>  $img,
+			'nama_vendor'		=>  $nam_vendor,
+		
+		);
+		$this->db->insert('vendor', $vendor);
 	}
 
 }

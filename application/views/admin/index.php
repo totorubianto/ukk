@@ -25,7 +25,8 @@
 								<img alt="Image placeholder" src="<?php echo base_url() ?>assets/assets/img/theme/team-4-800x800.jpg">
 							</span>
 							<div class="media-body ml-2 d-none d-lg-block">
-								<span class="mb-0 text-sm  font-weight-bold"><?php echo nama_ku ?></span>
+								<a href="<?php echo base_url() ?>admin/logout" class="mb-0 text-sm  font-weight-bold">
+									<?php echo $this->session->userdata('nama_admin'); ?></a>
 							</div>
 						</div>
 					</a>
@@ -70,8 +71,8 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-										<span class="h2 font-weight-bold mb-0">350,897</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Maskapai</h5>
+										<span class="h2 font-weight-bold mb-0"><?php echo $this->db->count_all('vendor'); ?></span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -81,7 +82,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-									<span class="text-nowrap">Since last month</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -91,8 +92,10 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-										<span class="h2 font-weight-bold mb-0">2,356</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">User</h5>
+										<span class="h2 font-weight-bold mb-0">
+											<?php echo $this->db->count_all('users'); ?>
+										</span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -102,7 +105,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-									<span class="text-nowrap">Since last week</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -112,8 +115,10 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-										<span class="h2 font-weight-bold mb-0">924</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Pemesanan</h5>
+										<span class="h2 font-weight-bold mb-0">
+											<?php echo $this->db->count_all('penumpang'); ?>
+										</span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -123,7 +128,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-									<span class="text-nowrap">Since yesterday</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -133,8 +138,8 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-										<span class="h2 font-weight-bold mb-0">49,65%</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Rute</h5>
+										<span class="h2 font-weight-bold mb-0"><?php echo $this->db->count_all('rute'); ?></span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -144,7 +149,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-									<span class="text-nowrap">Since last month</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -327,16 +332,16 @@
 									<td><?php echo $key->hari ?></td>
 									<td><?php echo $key->jam ?></td>
 									<td><?php echo $key->nama_type ?></td>
-<td class="text-right">
-											<div class="dropdown">
-												<a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-													<i class="fas fa-ellipsis-v"></i>
-												</a>
-												<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" style="padding: 10px;">													
-													<a class="btn btn-danger " style="width: 100%" href="<?php echo base_url() ?>admin/deleteRute/<?php echo $key->id_rute ?>/<?php echo $key->id_transportasi ?>/<?php echo $key->id_type_transportasi ?>">Delete</a>
-												</div>
+									<td class="text-right">
+										<div class="dropdown">
+											<a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<i class="fas fa-ellipsis-v"></i>
+											</a>
+											<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" style="padding: 10px;">													
+												<a class="btn btn-danger " style="width: 100%" href="<?php echo base_url() ?>admin/deleteRute/<?php echo $key->id_rute ?>/<?php echo $key->id_transportasi ?>/<?php echo $key->id_type_transportasi ?>">Delete</a>
 											</div>
-										</td>
+										</div>
+									</td>
 
 									
 								</tr>
@@ -381,3 +386,7 @@
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+<?php if ($this->session->userdata('id_level')==2) {
+			redirect('admin/pemesanan','refresh');
+		} 
+		 ?>

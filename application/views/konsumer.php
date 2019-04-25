@@ -7,7 +7,8 @@
             Isi Data Anda
         </h1>
         <h2 class="subtitle">
-            Isi!!!!!!!!!!!!!!!!
+            untuk pengecekan dibutuhkan data yang valid
+             <?php echo validation_errors(); ?>
         </h2>
     </div>
 </div>

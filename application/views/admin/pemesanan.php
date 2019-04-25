@@ -24,7 +24,8 @@
 								<img alt="Image placeholder" src="<?php echo base_url() ?>assets/assets/img/theme/team-4-800x800.jpg">
 							</span>
 							<div class="media-body ml-2 d-none d-lg-block">
-								<span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+								<a href="<?php echo base_url() ?>admin/logout" class="mb-0 text-sm  font-weight-bold">
+									<?php echo $this->session->userdata('nama_admin'); ?></a>
 							</div>
 						</div>
 					</a>
@@ -69,8 +70,8 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-										<span class="h2 font-weight-bold mb-0">350,897</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Maskapai</h5>
+										<span class="h2 font-weight-bold mb-0"><?php echo $this->db->count_all('vendor'); ?></span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -80,7 +81,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-									<span class="text-nowrap">Since last month</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -90,8 +91,10 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-										<span class="h2 font-weight-bold mb-0">2,356</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">User</h5>
+										<span class="h2 font-weight-bold mb-0">
+											<?php echo $this->db->count_all('users'); ?>
+										</span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -101,7 +104,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-									<span class="text-nowrap">Since last week</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -111,8 +114,10 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-										<span class="h2 font-weight-bold mb-0">924</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Pemesanan</h5>
+										<span class="h2 font-weight-bold mb-0">
+											<?php echo $this->db->count_all('penumpang'); ?>
+										</span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -122,7 +127,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-									<span class="text-nowrap">Since yesterday</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>
@@ -132,8 +137,8 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col">
-										<h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-										<span class="h2 font-weight-bold mb-0">49,65%</span>
+										<h5 class="card-title text-uppercase text-muted mb-0">Rute</h5>
+										<span class="h2 font-weight-bold mb-0"><?php echo $this->db->count_all('rute'); ?></span>
 									</div>
 									<div class="col-auto">
 										<div class="icon icon-shape bg-info text-white rounded-circle shadow">
@@ -143,7 +148,7 @@
 								</div>
 								<p class="mt-3 mb-0 text-muted text-sm">
 									<span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-									<span class="text-nowrap">Since last month</span>
+									<span class="text-nowrap">Kenaikan Harian</span>
 								</p>
 							</div>
 						</div>

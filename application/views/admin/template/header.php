@@ -57,32 +57,7 @@
 								</span>
 							</div>
 						</a>
-						<div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-							<div class=" dropdown-header noti-title">
-								<h6 class="text-overflow m-0">Welcome!</h6>
-							</div>
-							<a href="./examples/profile.html" class="dropdown-item">
-								<i class="ni ni-single-02"></i>
-								<span>My profile</span>
-							</a>
-							<a href="./examples/profile.html" class="dropdown-item">
-								<i class="ni ni-settings-gear-65"></i>
-								<span>Settings</span>
-							</a>
-							<a href="./examples/profile.html" class="dropdown-item">
-								<i class="ni ni-calendar-grid-58"></i>
-								<span>Activity</span>
-							</a>
-							<a href="./examples/profile.html" class="dropdown-item">
-								<i class="ni ni-support-16"></i>
-								<span>Support</span>
-							</a>
-							<div class="dropdown-divider"></div>
-							<a href="#!" class="dropdown-item">
-								<i class="ni ni-user-run"></i>
-								<span>Logout</span>
-							</a>
-						</div>
+						
 					</li>
 				</ul>
 				<!-- Collapse -->
@@ -117,18 +92,26 @@
 					<!-- Navigation -->
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>admin/">
-								<i class="ni ni-tv-2 text-primary"></i> Rute
-							</a>
+							<?php if ($this->session->userdata('id_level')==1){ ?>
+								<a class="nav-link" href="<?php echo base_url() ?>admin/">
+									<i class="ni ni-tv-2 text-primary"></i> Rute
+								</a>
+								<a class="nav-link" href="<?php echo base_url() ?>admin/pemesanan">
+									<i class="ni ni-planet text-blue"></i> Pemesanan
+								</a>
+								<a class="nav-link" href="<?php echo base_url() ?>admin/vendor">
+									<i class="ni ni-planet text-blue"></i> Vendor
+								</a>
+							<?php } else { ?>
+								
+								<a class="nav-link" href="<?php echo base_url() ?>admin/pemesanan">
+									<i class="ni ni-planet text-blue"></i> Pemesanan
+								</a>
+								
+							<?php } ?>
+							
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="<?php echo base_url() ?>admin/pemesanan">
-								<i class="ni ni-planet text-blue"></i> Pemesanan
-							</a>
-							<a class="nav-link" href="<?php echo base_url() ?>admin/vendor">
-								<i class="ni ni-planet text-blue"></i> Vendor
-							</a>
-						</li>
+						
 					</ul>
 					<!-- Divider -->
 					<hr class="my-3">
@@ -141,4 +124,6 @@
 		
 		<!-- Argon Scripts -->
 		<!-- Core -->
-		
+		<?php if (empty($this->session->userdata('nama_admin'))): ?>
+			<?php redirect('admin/login','refresh') ?>
+		<?php endif ?>
